@@ -1,6 +1,5 @@
-from django.test import TestCase, SimpleTestCase
+from django.test import TestCase
 from django.contrib.auth import get_user_model
-from django.urls import reverse
 
 # Create your tests here.
 
@@ -32,14 +31,3 @@ class CustomUserTests(TestCase):
         self.assertTrue(admin_user.is_active)
         self.assertTrue(admin_user.is_staff)
         self.assertTrue(admin_user.is_superuser)
-
-
-class HomePageTests(SimpleTestCase):
-
-    def test_homepage_status_code(self):
-        response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
-
-    def test_homepage_url_name(self):
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200)
