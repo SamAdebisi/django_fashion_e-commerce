@@ -25,10 +25,12 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+# SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG")
+# DEBUG = os.getenv("DEBUG")
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = [os.getenv("ALLOWED_HOSTS")]
 
@@ -172,6 +174,24 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-EMAIL_BACKENDS = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKENDS = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKENDS = 'django.core.mail.backends.smtp.EmailBackend'
 
 ACCOUNT_SESSION_REMEMBER = True
+
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+
+DEFAULT_FROM_EMAIL = 'admin@fashionstore.com'
+
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
