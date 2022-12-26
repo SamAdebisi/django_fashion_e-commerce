@@ -4,9 +4,6 @@ services:
   web:
     build: .
     command: python /fashion/manage.py runserver 0.0.0.0:8000
-    environment:
-      - SECRET_KEY=django-insecure-q=4279)2vh8(%$$--qhv_4movup)qo1m(443zl_d%l&202-uoc*
-      - DEBUG=1
     volumes:
       - .:/fashion
     ports:

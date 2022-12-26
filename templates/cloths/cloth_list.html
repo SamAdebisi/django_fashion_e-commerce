@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+{% block title %}Cloths{% endblock title %}
+
+{% block content %}
+    {% for cloth in cloth_list %}
+        <div>
+<!--            <h2><a href="{% url 'cloth_detail' cloth.pk %}">{{ object.style }}</a></h2>-->
+            <h2><a href="{{ cloth.get_absolute_url }}">{{ cloth.style }}</a></h2>
+        </div>
+    {% endfor %}
+{% endblock content %}

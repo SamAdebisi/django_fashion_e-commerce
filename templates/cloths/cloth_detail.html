@@ -1,0 +1,11 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ object.title }}{% endblock title %}
+
+{% block content %}
+    <div class="cloth-detail">
+        <h2><a href="">{{ cloth.style }}</a></h2>
+        <p>Stylist: {{ cloth.stylist }}</p>
+        <p>Price: {{ cloth.price }}</p>
+    </div>
+{% endblock content %}
