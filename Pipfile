@@ -9,6 +9,7 @@ psycopg2-binary = "*"
 python-dotenv = "*"
 django-crispy-forms = "*"
 django-allauth = "*"
+pillow = "*"
 
 [dev-packages]
 

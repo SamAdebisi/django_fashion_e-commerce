@@ -1,11 +1,22 @@
 {% extends "_base.html" %}
 
-{% block title %}{{ object.title }}{% endblock title %}
+{% block title %}{{ cloth.title }}{% endblock title %}
 
 {% block content %}
     <div class="cloth-detail">
+        {% if cloth.cover %}
+            <img class="clothcover" src="{{ cloth.cover.url }}" alt="{{ cloth.style }}">
+        {% endif %}
         <h2><a href="">{{ cloth.style }}</a></h2>
         <p>Stylist: {{ cloth.stylist }}</p>
         <p>Price: {{ cloth.price }}</p>
+        <div>
+            <h3>Reviews</h3>
+            <ul>
+                {% for review in cloth.reviews.all %}
+                <li>{{ review.review }} ({{ review.stylist }})</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock content %}

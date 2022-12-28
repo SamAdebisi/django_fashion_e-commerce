@@ -1,16 +1,29 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Cloth
+from .models import Cloth, Review
 
 
 class ClothTests(TestCase):
 
     def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username='reviewuser',
+            email='reviewuser@email.com',
+            password='testpass123',
+        )
+
         self.cloth = Cloth.objects.create(
             style='Simple',
             stylist='MESH',
             price='25.00',
+        )
+
+        self.review = Review.objects.create(
+            cloth=self.cloth,
+            stylist=self.user,
+            review='A great review',
         )
 
     def test_cloth_listing(self):
@@ -30,4 +43,5 @@ class ClothTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(no_response.status_code, 404)
         self.assertContains(response, 'Simple')
+        self.assertContains(response, 'A great review')
         self.assertTemplateUsed(response, 'cloths/cloth_detail.html')
