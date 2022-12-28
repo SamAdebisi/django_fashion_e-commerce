@@ -18,6 +18,11 @@ class Cloth(models.Model):
     cover = models.ImageField(upload_to='covers/', blank=True)
     # cover = models.FileField(upload_to='covers/')
 
+    class Meta:
+        permissions = [
+            ('special_status', 'Can view all cloths'),
+        ]
+
     def __str__(self):
         return self.style
 
