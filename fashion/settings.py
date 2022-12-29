@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'cloths.apps.ClothsConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 # django-crispy-forms
@@ -201,3 +202,6 @@ if not DEBUG:
     EMAIL_USE_TLS = True
 else:
     EMAIL_BACKENDS = 'django.core.mail.backends.console.EmailBackend'
+
+STRIPE_TEST_PUBLISHABLE_KEY = os.getenv('STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY = os.getenv('STRIPE_TEST_SECRET_KEY')

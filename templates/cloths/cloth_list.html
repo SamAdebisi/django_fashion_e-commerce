@@ -3,6 +3,9 @@
 {% block title %}Cloths{% endblock title %}
 
 {% block content %}
+    {% if not perms.cloths.special_status %}
+        <a href="{% url 'orders' %}" class="btn btn-success">Purchase All Cloths</a>
+    {% endif %}
     {% for cloth in cloth_list %}
         <div>
 <!--            <h2><a href="{% url 'cloth_detail' cloth.pk %}">{{ object.style }}</a></h2>-->

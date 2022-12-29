@@ -10,6 +10,7 @@ python-dotenv = "*"
 django-crispy-forms = "*"
 django-allauth = "*"
 pillow = "*"
+stripe = "==2.32.0"
 
 [dev-packages]
 
