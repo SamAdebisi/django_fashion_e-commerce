@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+{% block title %}Search{% endblock title %}
+
+{% block content %}
+    <h1>Search Results</h1>
+
+    {% for cloth in cloth_list %}
+        <div>
+            <h3><a href="{{ cloth.get_absolute_url }}">{{ cloth.style }}</a></h3>
+            <p>Stylist: {{ cloth.stylist }}</p>
+            <p>Price: $ {{ cloth.price }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}
