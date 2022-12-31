@@ -11,6 +11,7 @@ django-crispy-forms = "*"
 django-allauth = "*"
 pillow = "*"
 stripe = "==2.32.0"
+django-debug-toolbar = "*"
 
 [dev-packages]
 
